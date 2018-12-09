@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: gbdx-service
+spec:
+  selector:
+    app: gbdx
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000

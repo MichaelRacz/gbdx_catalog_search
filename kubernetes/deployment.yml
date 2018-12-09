@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gbdx-deployment
+  labels:
+    app: gbdx
+spec:
+  selector:
+    matchLabels:
+      app: gbdx
+  template:
+    metadata:
+      labels:
+        app: gbdx
+    spec:
+      containers:
+      - name: gbdx
+        image: gbdx_catalog_search
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+        env:
+        - name: GBDX_USER
+          valueFrom:
+            secretKeyRef:
+              name: gbdx-secret
+              key: GBDX_USER
+        - name: GBDX_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: gbdx-secret
+              key: GBDX_PASSWORD

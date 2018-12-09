@@ -1,0 +1,9 @@
+version: '3'
+services:
+  gbdx-catalog-search:
+    build: .
+    ports:
+    - "5000:5000"
+    environment:
+      GBDX_USER: "${GBDX_USER}"
+      GBDX_PASSWORD: "${GBDX_PASSWORD}"
