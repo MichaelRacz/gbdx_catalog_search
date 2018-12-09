@@ -16,8 +16,8 @@ __Requirements:__ docker, k8, minikube
 __Steps:__
 1. Activate ingress controller: `minikube addons enable ingress`(if you do not use minikube, any cluster with an ingress controller will suffice)
 2. Build the docker image and make it available inside the cluster (steps take from: https://stackoverflow.com/questions/42564058/how-to-use-local-docker-images-with-minikube):
-  1. Connect with docker inside K8: `eval $(minikube docker-env)`
-  2. Build image: `docker build -t gbdx_catalog_search .`
+   1. Connect with docker inside K8: `eval $(minikube docker-env)`
+   2. Build image: `docker build -t gbdx_catalog_search .`
 3. Create secret for gbdx credentials: `kubectl create secret generic gbdx-secret --from-literal=GBDX_USER='<username>' --from-literal=GBDX_PASSWORD='<password>'`
 4. Apply K8 artefacts: `kubectl apply -f ./kubernetes`
 5. Determine cluster ip: `minikube ip`
